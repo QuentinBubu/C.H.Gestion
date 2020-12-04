@@ -4,9 +4,6 @@ session_start();
 
 require '../vendor/autoload.php';
 
-use App\User;
-
-$user = new User('root', '', 'localhost', 'c.h.gestion');
 $router = new AltoRouter();
 
 require '../App/roads.php';

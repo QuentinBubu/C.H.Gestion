@@ -4,26 +4,24 @@ namespace App;
 
 class User extends Database
 {
-    private $globalAccountInformation;
+    public $globalAccountInformation;
 
-    private function setNewAccount($userName, $password, $passwordConfirm, $mail)
+    private function setNewAccount($username, $password, $passwordConfirm, $location, $service)
     {
-        $accountNumber = 
-            $this->getRequest(
-                'SELECT *
-                FROM `users` 
-                WHERE `userName` = :userName 
-                OR `mail` = :mail',
-                [
-                    'userName' => $userName,
-                    'mail' => $mail
-                ],
-                'fetchAll'
-            );
+        $accountNumber =
+        $this->getRequest(
+            'SELECT *
+                FROM `users`
+                WHERE `username` = :username',
+            [
+                'userName' => $username,
+            ],
+            'fetchAll'
+        );
         if (
             count($accountNumber) !== 0
         ) {
-            return 'Nom d\'utilisateur ou adresse mail déjà existante! ';
+            return 'Nom d\'utilisateur déjà existant! ';
         } elseif (
             $password !== $passwordConfirm
         ) {
@@ -34,91 +32,77 @@ class User extends Database
         ) {
             return 'Saisissez un mot de passe entre 10 et 30 caractères!';
         } elseif (
-            strlen($userName) < 5
-            || strlen($userName) > 20
+            strlen($username) <= 3
         ) {
-            return 'Votre identifiant doit contenir entre 5 et 20 caractères!';
-        } elseif (
-            !filter_var($mail, FILTER_VALIDATE_EMAIL)
-        ) {
-            return 'Saisissez une adresse mail valide!';
+            return 'Votre identifiant doit contenir au moins 3 caractères inclus!';
         } else {
-            date_default_timezone_set('Europe/Paris');
-            $token = "M" . sha1(session_id() . microtime());
             if (
-            $this->getRequest(
-                'INSERT INTO `users`
-                (
-                    `userName`,
-                    `password`,
-                    `mail`,
-                    `creationDate`,
-                    `profilImage`,
-                    `token`
-                ) VALUES
-                (
-                    :userName,
-                    :pswd,
-                    :mail,
-                    NOW(),
-                    :profilImage,
-                    :token
-                )', 
-                [
-                    'userName' => $userName,
-                    'pswd' => password_hash($password, PASSWORD_ARGON2ID),
-                    'mail' => $mail,
-                    'profilImage' => 'profil.svg',
-                    'token' => $token
-                ]
-            ))
-            {
+                $this->getRequest(
+                    'INSERT INTO `users` (
+                        `username`,
+                        `password`,
+                        `location`,
+                        `service`
+                    ) VALUES (
+                        :username,
+                        :password,
+                        :location,
+                        :service
+                    )',
+                    [
+                        'username' => $username,
+                        'password' => password_hash($password, PASSWORD_ARGON2ID),
+                        'location' => $location,
+                        'service' => $service,
+                    ]
+                )
+            ) {
                 return true;
             } else {
                 return 'Une erreur s\'est produite!';
             }
         }
-
     }
 
-    private function setConnexion($userName, $password)
+    private function setConnexion(string $username, string $password)
     {
         $request = $this->getRequest(
-           'SELECT *
-           FROM `users`
-           WHERE `userName` = :userName
-           OR `mail` = :userName',
-        [
-            'userName' => $userName
-        ],
-        'fetch');
+            'SELECT *
+            FROM `users`
+            WHERE `username` = :username',
+            [
+                'username' => $username,
+            ],
+            'fetch'
+        );
 
         if (!$request) {
             return 'Compte introuvable';
         } elseif (!password_verify($password, $request['password'])) {
             return 'Mot de passe incorrect';
-        } elseif (substr($request['token'], 0, 1) !== 'V') {
-            return 'Validez d\'abord votre compte!';
         } else {
             $this->globalAccountInformation = $request;
-            $this->accountType = $request['accountType'];
-            $_SESSION['id'] = $request['id'];
             return true;
         }
     }
 
-    public function getNewAccount($userName, $password, $passwordConfirm, $mail)
+    public function getNewAccount(string $username, string $password, string $passwordConfirm, string $location, string $service)
     {
-        return $this->setNewAccount($userName, $password, $passwordConfirm, $mail);
+        return $this->setNewAccount($username, $password, $passwordConfirm, $location, $service);
     }
 
-    public function getConnexion($userName, $password)
+    public function getConnexion(string $username, string $password)
     {
-        return $this->setConnexion($userName, $password);
+        return $this->setConnexion($username, $password);
     }
 
     public function getInformation(string $info)
     {
         return $this->globalAccountInformation[$info];
+    }
+
+    public function getAllInformation(): array
+    {
+        return $this->globalAccountInformation;
     }
 }

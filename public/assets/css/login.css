@@ -1,6 +1,6 @@
 body {
     background-image: url("../picture/background_blur.jpg");
-    background-repeat: none;
+    background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
     align-items: center;
@@ -25,6 +25,10 @@ main>form>input {
     margin-bottom: 1rem;
 }
 
+main>form>input:focus {
+    outline-color: orange;
+}
+
 main>form>input:valid {
     border: 2px solid green;
 }
@@ -33,11 +37,23 @@ main>form>input:invalid {
     border: 2px solid red;
 }
 
+#username:invalid ~ #pass:invalid ~ button {
+    border: 2px solid red;
+    color: red;
+}
+
+#username:valid ~ #pass:valid ~ button {
+    border: 2px solid green;
+    color: green;
+}
+
 main>form>button {
     text-decoration: underline;
-    border: 2px solid black;
+    border: 2px solid red;
+    color: red;
     border-radius: 50%;
     padding: 0.5rem;
     width: fit-content;
     margin: auto;
+    outline: transparent solid 0;
 }

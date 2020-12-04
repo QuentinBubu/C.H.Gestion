@@ -7,30 +7,30 @@ use Exception;
 
 class Database
 {
+    private $dns;
     private $login;
     private $password;
-    private $host;
-    private $db_name;
     private $pdo;
 
-    public function __construct($login = "root", $password = "", $host = "localhost", $db_name = "example")
+    public function __construct($dns, $login, $password)
     {
         $this->login = $login;
         $this->password = $password;
-        $this->host = $host;
-        $this->db_name = $db_name;
-        $this->pdo = $this->setPDO();
+        $this->dns = $dns;
+        $this->setPDO();
     }
     
     private function setPDO()
     {
-        try {
-            $pdo = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db_name .';charset=utf8', $this->login, $this->password);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (Exception $e) {
-            echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        if ($this->pdo === null) {
+            try {
+                $pdo = new PDO($this->dns, $this->login, $this->password);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->pdo = $pdo;
+            } catch (Exception $e) {
+                echo 'Exception reçue : ' . $e->getMessage() . "\n";
+            }
         }
-        return $pdo;
     }
 
     private function request($request, $values, $type)
