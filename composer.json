@@ -1,0 +1,14 @@
+{
+    "name": "quentinbubu/c.h.gestion",
+    "description": "Centre Hospitalier Gestion is a website for manage your hospitals center",
+    "require": {
+        "altorouter/altorouter": "^2.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "QuentinBubu",
+            "email": "anagamesprint@gmail.com"
+        }
+    ]
+}
