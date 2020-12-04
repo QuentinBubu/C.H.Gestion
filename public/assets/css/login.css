@@ -1,0 +1,43 @@
+body {
+    background-image: url("../picture/background_blur.jpg");
+    background-repeat: none;
+    background-size: cover;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+main {
+    margin: 5rem;
+}
+
+main>form {
+    display: flex;
+    flex-direction: column;
+}
+
+main>form>label {
+    text-decoration: underline;
+}
+
+main>form>input {
+    margin-bottom: 1rem;
+}
+
+main>form>input:valid {
+    border: 2px solid green;
+}
+
+main>form>input:invalid {
+    border: 2px solid red;
+}
+
+main>form>button {
+    text-decoration: underline;
+    border: 2px solid black;
+    border-radius: 50%;
+    padding: 0.5rem;
+    width: fit-content;
+    margin: auto;
+}
