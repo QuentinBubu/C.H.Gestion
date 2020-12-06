@@ -1,0 +1,1 @@
+INSERT INTO `users` VALUES (NULL, 'personnel4.service', '$argon2id$v=19$m=65536,t=4,p=1$OFdhLmpYNlhRNEZlbFllOA$s1Xqvqy1La/vPAqNVnVr1RBNn6nfjb6o+cXo95e2r94', 'lyon', 'pediatrique')
