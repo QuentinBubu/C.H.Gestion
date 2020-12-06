@@ -2,6 +2,8 @@
 
 use App\User;
 
+use function PHPSTORM_META\type;
+
 if (!isset($_SESSION['user'])) {
     header('Location: /');
     exit();
@@ -58,11 +60,15 @@ if (isset($_GET['showAll'])) {
             ],
             'fetch'
         );
-        array_push($locations, [$value['Tables_in_c.h.gestion'] => $data]);
+        $push = [
+            'location' => $value['Tables_in_c.h.gestion']
+        ];
+        if (is_bool($data)) {
+            continue;
+        }
+        array_push($push, $data);
+        array_push($locations, $push);
     }
-    echo '<pre>';
-    var_dump($locations);
-    echo '</pre>';
 }
 
 ?>
@@ -105,6 +111,18 @@ if (isset($_GET['showAll'])) {
             <form method="get">
                 <button name="showAll">Afficher tout</button>
             </form>
+            <?php
+                if (isset($locations)):
+                    foreach ($locations as $key => $value):
+                        ?>
+                        <h3>Hôpital <?= $value['location'] ?>:</h3>
+                        <p>Lits disponibles: <?= $value[0]['lits_total'] - $value[0]['lits_occupes'] ?></p>
+                        <p>Lits occupés: <?= $value[0]['lits_occupes'] ?></p>
+                        <p>Lits total: <?= $value[0]['lits_total'] ?></p>
+                        <?php
+                    endforeach;
+                endif;
+            ?>
         </section>
     </main>
 </body>
