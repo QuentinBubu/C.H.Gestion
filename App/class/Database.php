@@ -12,7 +12,7 @@ class Database
     private $password;
     private $pdo;
 
-    public function __construct($dns, $login, $password)
+    public function __construct($dns = 'mysql:host=localhost;dbname=c.h.gestion;charset=utf8', $login = 'root', $password = '')
     {
         $this->login = $login;
         $this->password = $password;
@@ -35,8 +35,12 @@ class Database
 
     private function request($request, $values, $type)
     {
-        $request = $this->pdo->prepare($request);
-        $request->execute($values);
+        try {
+            $request = $this->pdo->prepare($request);
+            $request->execute($values);
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
         if ($type === 'fetchAll') {
             return $request->fetchAll(PDO::FETCH_OBJ);
         } elseif ($type === 'fetch') {

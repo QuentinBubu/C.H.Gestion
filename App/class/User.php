@@ -105,4 +105,11 @@ class User extends Database
     {
         return $this->globalAccountInformation;
     }
+
+    public function setInformation($informations)
+    {
+        foreach ($informations['globalAccountInformation'] as $key => $value) {
+            $this->globalAccountInformation[$key] = $value;
+        }
+    }
 }

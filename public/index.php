@@ -15,5 +15,6 @@ if ($results != null) {
         require "./{$results['target']}.php";
     }
 } else {
-    require './assets/errorPage/404.html';
+    require './error.php';
+    printError('Page introuvable');
 }

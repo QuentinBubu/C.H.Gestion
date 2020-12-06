@@ -1,3 +1,9 @@
+<?php
+    if (isset($_SESSION['user'])) {
+        header('Location: ' . $router->generate('account'));
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
