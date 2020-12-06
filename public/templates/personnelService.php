@@ -35,6 +35,36 @@ $all = $user->getRequest(
     'fetch'
 );
 
+if (isset($_GET['showAll'])) {
+    $tables = $user->getRequest(
+        'SHOW TABLES FROM `c.h.gestion`',
+        [],
+        'fetchAll'
+    );
+    $locations = [];
+    foreach ($tables as $value) {
+        if (
+            $value['Tables_in_c.h.gestion'] === 'patients'
+            || $value['Tables_in_c.h.gestion'] === 'users'
+        ) {
+            continue;
+        }
+        $data = $user->getRequest(
+            "SELECT *
+            FROM {$value['Tables_in_c.h.gestion']}
+            WHERE `service` = :service",
+            [
+                'service' => $user->getInformation('service')
+            ],
+            'fetch'
+        );
+        array_push($locations, [$value['Tables_in_c.h.gestion'] => $data]);
+    }
+    echo '<pre>';
+    var_dump($locations);
+    echo '</pre>';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -67,6 +97,13 @@ $all = $user->getRequest(
                 <label for="arrival">Arrivée(s):</label>
                 <input type="number" name="arrival" id="arrival" min="0" value="0"/>
                 <button>Enregistrer</button>
+            </form>
+        </section>
+
+        <section>
+            <h1>Voir tout les lits du service <?= $user->getInformation('service') ?> dans les autres hôpitaux</h1>
+            <form method="get">
+                <button name="showAll">Afficher tout</button>
             </form>
         </section>
     </main>

@@ -42,7 +42,7 @@ class Database
             die('Erreur: ' . $e->getMessage());
         }
         if ($type === 'fetchAll') {
-            return $request->fetchAll(PDO::FETCH_OBJ);
+            return $request->fetchAll(PDO::FETCH_ASSOC);
         } elseif ($type === 'fetch') {
             return $request->fetch();
         } else {
