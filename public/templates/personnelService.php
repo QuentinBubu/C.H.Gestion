@@ -93,7 +93,7 @@ if (isset($_GET['showAllThis'])) {
 <body>
 
     <header>
-        <h1>Bonjour <?= $user->getInformation('username') ?></h1>
+        <h1>Bonjour <?= $user->getInformation('username') ?>!</h1>
         <h2>Service <?= $user->getInformation('service') ?>, hôpital <?= $user->getInformation('location') ?></h2>
     </header>
 
@@ -153,6 +153,14 @@ if (isset($_GET['showAllThis'])) {
                 endif;
             ?>
         </section>
+
+        <section>
+            <h1>Afficher une fiche patient:</h1>
+            <form method="post">
+                <input type="text" id="" name="nom" placeholder="Nom" />
+            </form>
+        </section>
+
     </main>
 </body>
 </html>

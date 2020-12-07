@@ -1,0 +1,29 @@
+{
+    "informations": {
+        "nom": "nom",
+        "prénom": "prenom",
+        "âge": "age",
+        "adresse": "adresse",
+        "numéro portable": "0123456789",
+        "numéro fixe": "0123456789",
+        "personne de confiance": ""
+    },
+    "visites": {
+        "X": {
+            "jour": "date: dd-mm-YYYY",
+            "cause": "cause",
+            "vu par": "id personnel soignant",
+            "traitement": "traitement"
+        }
+    },
+    "hospitalisation": {
+        "du": "date: dd-mm-YYYY",
+        "au": "date: dd-mm-YYYY",
+        "service": "service",
+        "raison": "raisons de l'hôspitalisation",
+        "traitement": "traitement"
+    },
+    "incidents": {
+        "catégorie": "détails"
+    }
+}
