@@ -71,6 +71,15 @@ if (isset($_GET['showAll'])) {
     }
 }
 
+if (isset($_GET['showAllThis'])) {
+    $bed = $user->getRequest(
+        "SELECT *
+        FROM {$user->getInformation('location')}",
+        [],
+        'fetchAll'
+    );
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -120,6 +129,25 @@ if (isset($_GET['showAll'])) {
                         <p>Lits disponibles: <?= $value[0]['lits_total'] - $value[0]['lits_occupes'] ?></p>
                         <p>Lits occupés: <?= $value[0]['lits_occupes'] ?></p>
                         <p>Lits total: <?= $value[0]['lits_total'] ?></p>
+                        <?php
+                    endforeach;
+                endif;
+            ?>
+        </section>
+
+        <section>
+            <h1>Voir tout les lits de cet hôpital</h1>
+            <form method="get">
+                <button name="showAllThis">Afficher tout</button>
+            </form>
+            <?php
+                if (isset($bed)):
+                    foreach ($bed as $key => $value):
+                        ?>
+                        <h3>Service <?= $value['service'] ?>:</h3>
+                        <p>Lits disponibles: <?= $value['lits_total'] - $value['lits_occupes'] ?></p>
+                        <p>Lits occupés: <?= $value['lits_occupes'] ?></p>
+                        <p>Lits total: <?= $value['lits_total'] ?></p>
                         <?php
                     endforeach;
                 endif;
