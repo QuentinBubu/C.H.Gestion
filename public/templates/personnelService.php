@@ -100,9 +100,21 @@
         </section>
         <section>
             <?php if (isset($patient)): ?>
+                <h3>Ajouter un incident</h3>
                 <form method="post">
                     <input type="hidden" name="name" value="<?= $patient['nom'] ?>" />
                     <input type="hidden" name="firstName" value="<?= $patient['prénom'] ?>" />
+                    <label for="category">Catégorie:</label>
+                    <select name="incidentCategory" id="category" required>
+                        <option selected disabled>--Séléctionnez une option--</option>
+                        <option value="Violences physiques">Violences physiques</option>
+                        <option value="Violences verbales">Violences verbales</option>
+                        <option value="Degradation">Dégradations</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                    <label for="incidentDetails">Détails</label>
+                    <input type="text" name="incidentDetails" id="incidentDetails" required />
+                    <button>Enregistrer</button>
                 </form>
             <?php endif; ?>
         </section>

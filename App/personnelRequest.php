@@ -2,6 +2,11 @@
 
 use App\User;
 
+/*
+ * Redirect to index if user is disconnected
+ * Else, create user class
+*/
+
 if (!isset($_SESSION['user'])) {
     header('Location: /');
     exit();
@@ -10,11 +15,15 @@ if (!isset($_SESSION['user'])) {
     $user->setInformation(json_decode($_SESSION['user'], true));
 }
 
+// If user has not authorization
+
 if (!isset($user)) {
     require_once 'error.php';
     printError('Erreur: vous n\'avez pas les droits!');
     exit();
 }
+
+// Update bed available
 
 if (isset($_POST['departure']) && isset($_POST['arrival'])) {
     $user->getRequest(
