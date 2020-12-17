@@ -77,3 +77,35 @@ if (isset($_GET['showAllThis'])) {
         'fetchAll'
     );
 }
+
+if (isset($_GET['name'], $_GET['firstName'])) {
+    $patient = $user->getRequest(
+        'SELECT *
+        FROM `patients`
+        WHERE `name` = :name
+        AND `firstName` = :firstName',
+        [
+            'name' => $_GET['name'],
+            'firstName' => $_GET['firstName']
+        ],
+        'fetch'
+    );
+    $patient = json_decode($patient['informations'], true);
+}
+
+if (isset($_GET['patient_id'])) {
+    $patient = $user->getRequest(
+        'SELECT *
+        FROM `patients`
+        WHERE `id` = :id',
+        [
+            'id' => $_GET['patient_id'],
+        ],
+        'fetch'
+    );
+    $patient = json_decode($patient['informations'], true);
+}
+
+if (isset($patient) && is_bool($patient)) {
+    $patient = 'Erreur: patient introuvable!';
+}

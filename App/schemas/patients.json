@@ -17,11 +17,21 @@
         }
     },
     "hospitalisation": {
-        "du": "date: dd-mm-YYYY",
-        "au": "date: dd-mm-YYYY",
-        "service": "service",
-        "raison": "raisons de l'hôspitalisation",
-        "traitement": "traitement"
+        "X": {
+            "du": "date: dd-mm-YYYY",
+            "au": "date: dd-mm-YYYY",
+            "service": "service",
+            "raison": "raisons de l'hôspitalisation",
+            "traitement": "traitement",
+            "Jour X": {
+                "heure": {
+                    "température": "00",
+                    "taux d'oxygène": "00",
+                    "tension": "00",
+                    "douleur": "00"
+                }
+            }
+        }
     },
     "incidents": {
         "catégorie": "détails"

@@ -76,6 +76,7 @@
 
         <section>
             <h1>Afficher une fiche patient:</h1>
+            <h3>Par Nom et Prénom</h3>
             <form method="post">
                 <label for="name">Nom:</label>
                 <input type="text" id="name" name="name" placeholder="Nom" />
@@ -83,8 +84,29 @@
                 <input type="text" id="firstName" name="firstName" placeholder="Prénom" />
                 <button>Voir la fiche</button>
             </form>
+            <h3>Par identifiant</h3>
+            <form method="get">
+                <label for="patient_id">Identifiant:</label>
+                <input type="number" id="patient_id" name="patient_id" placeholder="Identifiant" />
+                <button>Voir la fiche</button>
+            </form>
+            <?php
+                if (isset($patient)) {
+                    echo '<pre>';
+                    var_dump($patient);
+                    echo '</pre>';
+                }
+            ?>
         </section>
-
+        <section>
+            <?php if (isset($patient)): ?>
+                <form method="post">
+                    <input type="hidden" name="name" value="<?= $patient['nom'] ?>" />
+                    <input type="hidden" name="firstName" value="<?= $patient['prénom'] ?>" />
+                </form>
+            <?php endif; ?>
+        </section>
     </main>
+    <br><br><br><br><br><br><br><br><br>
 </body>
 </html>
