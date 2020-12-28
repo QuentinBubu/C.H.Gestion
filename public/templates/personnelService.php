@@ -110,7 +110,7 @@
                         <option value="Violences physiques">Violences physiques</option>
                         <option value="Violences verbales">Violences verbales</option>
                         <option value="Degradation">Dégradations</option>
-                        <option value="autre">Autre</option>
+                        <option value="Autre">Autre</option>
                     </select>
                     <label for="incidentDetails">Détails</label>
                     <input type="text" name="incidentDetails" id="incidentDetails" required />
