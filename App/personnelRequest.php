@@ -118,3 +118,33 @@ if (isset($_GET['patient_id'])) {
 if (isset($patient) && is_bool($patient)) {
     $patient = 'Erreur: patient introuvable!';
 }
+
+if (
+    isset(
+        $_POST['name'],
+        $_POST['firstName'],
+        $_POST['incidentCategory'],
+        $_POST['incidentDetails']
+    )
+) {
+
+    $patient = $user->getRequest(
+        'SELECT *
+        FROM `patients`
+        WHERE `name` = :name
+        AND `firstName` = :firstName',
+        [
+            'name' => $_POST['name'],
+            'firstName' => $_POST['firstName']
+        ],
+        'fetch'
+    );
+    $patient = json_decode($patient['informations'], true);
+
+    
+
+    $user->getRequest(
+        'INSERT INTO ``',
+        []
+    );
+}
