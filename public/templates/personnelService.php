@@ -19,22 +19,22 @@
     </header>
 
     <main>
-    <section class="Lits-section">
+        <section class="Lits-section">
             <h3>Lits:</h3>
 
-    <div class="grid-lits" align="center">
-        <div class="Lits-section-1">
-            <p>Lits disponibles: <h1 class="nbr-lits"><?= $all['lits_total'] - $all['lits_occupes'] ?></h1></p>
-        </div>
+            <div class="grid-lits">
+                <div class="lits-section">
+                    <p>Lits disponibles: <h1 class="nbr-lits"><?= $all['lits_total'] - $all['lits_occupes'] ?></h1></p>
+                </div>
 
-        <div class="Lits-section-2">
-            <p>Lits occupés: <h1 class="nbr-lits"><?= $all['lits_occupes'] ?></h1></p>
-        </div>
+                <div class="lits-section">
+                    <p>Lits occupés: <h1 class="nbr-lits"><?= $all['lits_occupes'] ?></h1></p>
+                </div>
 
-        <div class="Lits-section-3">
-            <p>Lits total: <h1 class="nbr-lits"><?= $all['lits_total'] ?></h1> </p>
-        </div>
-     </div>
+                <div class="lits-section">
+                    <p>Lits total: <h1 class="nbr-lits"><?= $all['lits_total'] ?></h1> </p>
+                </div>
+            </div>
         </section>
 
         <section>

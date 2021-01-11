@@ -1,45 +1,15 @@
 body {
-    background-color: white;
-    color: black;
     align-items:center;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 /* section lits card */
 .grid-lits{
-    display: grid;
-    
-}
-.Lits-section-1{
-    /* emplacement */
-    grid-column: 1;
-    grid-row: 4;
-    /* taille */
-    width: 200px;
-    height: 200px;
-    /* couleurs */
-    color: white;
-    border-radius: 20px;
-    background-color: black;
+    display: flex;
+    justify-content: space-around;
 }
 
-.Lits-section-2{
-    /* emplacement */
-    grid-column: 2;
-    grid-row: 4;
-    /* taille */
-    width: 200px;
-    height: 200px;
-    /* couleurs + bord*/
-    color: white;
-    border-radius: 20px;
-    background-color: black;
-}
-
-.Lits-section-3{
-    /* emplacement */
-    grid-column: 3;
-    grid-row: 4;
+.lits-section{
     /* taille */
     width: 200px;
     height: 200px;
@@ -52,4 +22,22 @@ body {
 /* taille de la police des nombres */
 .nbr-lits{
     font-size:40px;
+}
+
+/* taille de la police des nombres */
+.nbr-lits{
+    font-size:80px;
+}
+
+h1{
+    margin: 0;
+}
+/* fin des css grid */
+
+/* formulaire soignants */
+.form-dp{
+    border:1px solid black;
+    display: inline-block;
+    padding: 20px;
+    border-radius: 20px;
 }
