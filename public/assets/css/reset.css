@@ -325,3 +325,12 @@ video {
     max-width: 100%;
     height: auto
 }
+
+/* Personnal class */
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

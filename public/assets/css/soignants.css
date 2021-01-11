@@ -45,8 +45,3 @@ h1{
     border-radius: 20px;
     background-color: #e3684da6;
 }
-main{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
