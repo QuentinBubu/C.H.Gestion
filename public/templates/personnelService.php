@@ -14,16 +14,27 @@
 <body>
 
     <header>
-        <h1>Bonjour <?= $user->getInformation('username') ?>!</h1>
+        <h1>Bonjour <?= $user->getInformation('username') ?> !</h1>
         <h2>Service <?= $user->getInformation('service') ?>, hôpital <?= $user->getInformation('location') ?></h2>
     </header>
 
     <main>
-    <section>
+    <section class="Lits-section">
             <h3>Lits:</h3>
-            <p>Lits disponibles: <?= $all['lits_total'] - $all['lits_occupes'] ?></p>
-            <p>Lits occupés: <?= $all['lits_occupes'] ?></p>
-            <p>Lits total: <?= $all['lits_total'] ?></p>
+
+    <div class="grid-lits" align="center">
+        <div class="Lits-section-1">
+            <p>Lits disponibles: <h1 class="nbr-lits"><?= $all['lits_total'] - $all['lits_occupes'] ?></h1></p>
+        </div>
+
+        <div class="Lits-section-2">
+            <p>Lits occupés: <h1 class="nbr-lits"><?= $all['lits_occupes'] ?></h1></p>
+        </div>
+
+        <div class="Lits-section-3">
+            <p>Lits total: <h1 class="nbr-lits"><?= $all['lits_total'] ?></h1> </p>
+        </div>
+     </div>
         </section>
 
         <section>
