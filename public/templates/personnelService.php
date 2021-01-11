@@ -39,13 +39,13 @@
 
         <section>
             <h3>Départ / arrivés:</h3>
-            <form action="<?= $router->generate('soignantsPOST') ?>" method="post">
-                <label for="departure">Départ(s):</label>
-                <input type="number" name="departure" id="departure" min="0" value="0"/>
-                <label for="arrival">Arrivée(s):</label>
-                <input type="number" name="arrival" id="arrival" min="0" value="0"/>
-                <button>Enregistrer</button>
-            </form>
+                <form class="form-dp" action="<?= $router->generate('soignantsPOST') ?>" method="post">
+                    <label for="departure">Départ(s):</label>
+                    <input type="number" name="departure" id="departure" min="0" value="0"/>
+                    <label for="arrival">Arrivée(s):</label>
+                    <input type="number" name="arrival" id="arrival" min="0" value="0"/>
+                    <button>Enregistrer</button>
+                </form>
         </section>
 
         <section>

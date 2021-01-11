@@ -7,6 +7,7 @@ body {
 .grid-lits{
     display: flex;
     justify-content: space-around;
+    text-align: center;
 }
 
 .lits-section{
@@ -34,10 +35,18 @@ h1{
 }
 /* fin des css grid */
 
+
+
 /* formulaire soignants */
+
 .form-dp{
-    border:1px solid black;
     display: inline-block;
     padding: 20px;
     border-radius: 20px;
+    background-color: #e3684da6;
+}
+main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
