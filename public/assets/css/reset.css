@@ -320,7 +320,18 @@ video {
 }
 
 /* Personnal class */
-
+input{
+    padding: 2px;
+    padding-left: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+button{
+    background-color:black;
+}
+*{
+    outline: transparent;
+}
 .center-content {
     display: flex;
     flex-direction: column;
