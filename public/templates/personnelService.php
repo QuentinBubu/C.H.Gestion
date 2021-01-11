@@ -15,8 +15,8 @@
 <body>
 
     <header>
-        <h1>Bonjour <?= $user->getInformation('username') ?> !</h1>
-        <h2>Service <?= $user->getInformation('service') ?>, hôpital <?= $user->getInformation('location') ?></h2>
+        <h1>Bonjour <div class="titre-w"><?= $user->getInformation('username') ?></div> !</h1>
+        <h2>Service <div class="titre-w"><?= $user->getInformation('service') ?></div>, hôpital <div class="titre-w"><?= $user->getInformation('location') ?></div></h2>
     </header>
 
     <main>
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </section>
-
+<br><br><br><br>
         <section>
             <h3>Départ / arrivés:</h3>
             <div class="center-content">
@@ -49,31 +49,34 @@
                     <button>Enregistrer</button>
                 </form>
             </div>
-        </section>
+        </section> <br><br>
 
         <section>
             <h1>Voir tout les lits du service <?= $user->getInformation('service') ?> dans les autres hôpitaux</h1>
             <form method="get">
-                <button name="showAll">Afficher tout</button>
+                <button name="showAll">Afficher tout</button> <br><br>
             </form>
             <?php
                 if (isset($locations)):
                     foreach ($locations as $key => $value):
                         ?>
-                        <h3>Hôpital <?= $value['location'] ?>:</h3>
-                        <p>Lits disponibles: <?= $value[0]['lits_total'] - $value[0]['lits_occupes'] ?></p>
-                        <p>Lits occupés: <?= $value[0]['lits_occupes'] ?></p>
-                        <p>Lits total: <?= $value[0]['lits_total'] ?></p>
+                        <div class="list-card">
+                            <h3>Hôpital <?= $value['location'] ?>:</h3>
+                            <p>Lits disponibles: <?= $value[0]['lits_total'] - $value[0]['lits_occupes'] ?></p>
+                            <p>Lits occupés: <?= $value[0]['lits_occupes'] ?></p>
+                            <p>Lits total: <?= $value[0]['lits_total'] ?></p> <br>
+                        </div>
                         <?php
                     endforeach;
                 endif;
             ?>
+            
         </section>
-
+                <br>
         <section>
             <h1>Voir tout les lits de cet hôpital</h1>
             <form method="get">
-                <button name="showAllThis">Afficher tout</button>
+                <button class="button-lit-affichage" name="showAllThis">Afficher tout</button>
             </form>
             <?php
                 if (isset($bed)):
