@@ -1,10 +1,13 @@
 body {
     align-items:center;
-    margin-top: 20px;
+    margin-top: 1rem;
     background: rgb(131,58,180);
-background: linear-gradient(45deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
-    
+    background: linear-gradient(45deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
     font-family: Arial, Helvetica, sans-serif;
+}
+
+main>section {
+    margin: 20px 0;
 }
 
 /* section lits card */
@@ -13,8 +16,8 @@ background: linear-gradient(45deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%,
     justify-content: space-around;
     text-align: center;
 }
+
 .titre-w{
-    display: inline-block;
     color: white;
 }
 
@@ -23,7 +26,6 @@ background: linear-gradient(45deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%,
     width: 200px;
     height: 200px;
     padding-top: 20px;
-    
     /* couleurs */
     color: black;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -33,15 +35,15 @@ background: linear-gradient(45deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%,
 
 /* taille de la police des nombres */
 .nbr-lits{
-    font-size:40px;
+    font-size: 2rem;
 }
 
 /* taille de la police des nombres */
 .nbr-lits{
-    font-size:80px;
+    font-size: 4rem;
 }
 
-h1{
+h1 {
     margin: 0;
 }
 /* fin des css grid */
@@ -50,7 +52,7 @@ h1{
 
 /* formulaire soignants */
 
-.form-dp{
+.form-dp {
     display: inline-block;
     padding: 20px;
     border-radius: 20px;
@@ -59,7 +61,7 @@ h1{
 }
 
 /* card-list */
-.list-card{
+.list-card {
     padding: 10px;
     border-radius: 20px;
     margin-left: 20px;
@@ -68,6 +70,6 @@ h1{
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     margin-bottom: 20px;
 }
-.button-lit-affichage{
+.button-lit-affichage {
     margin-left: 20px;
 }
