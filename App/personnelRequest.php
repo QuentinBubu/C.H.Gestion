@@ -24,93 +24,23 @@ if (!isset($user)) {
 
 // Update bed available
 if (isset($_POST['departure']) && isset($_POST['arrival'])) {
-    $user->getRequest(
-        "UPDATE `{$user->getInformation('location')}`
-        SET `lits_occupes` = `lits_occupes` - :occupe
-        WHERE `service` = \"{$user->getInformation('service')}\"",
-        [
-            'occupe' => $_POST['departure'] - $_POST['arrival']
-        ]
-    );
+    $user->updateBed($_POST['departure'], $_POST['arrival']);
 }
 
-$all = $user->getRequest(
-    "SELECT *
-    FROM `{$user->getInformation('location')}`
-    WHERE `service` = \"{$user->getInformation('service')}\"",
-    [],
-    'fetch'
-);
-
 if (isset($_GET['showAll'])) {
-    $tables = $user->getRequest(
-        'SHOW TABLES FROM `c.h.gestion`',
-        [],
-        'fetchAll'
-    );
-    $locations = [];
-    foreach ($tables as $value) {
-        if (
-            $value['Tables_in_c.h.gestion'] === 'patients'
-            || $value['Tables_in_c.h.gestion'] === 'users'
-        ) {
-            continue;
-        }
-        $data = $user->getRequest(
-            "SELECT *
-            FROM {$value['Tables_in_c.h.gestion']}
-            WHERE `service` = :service",
-            [
-                'service' => $user->getInformation('service')
-            ],
-            'fetch'
-        );
-        $push = [
-            'location' => $value['Tables_in_c.h.gestion']
-        ];
-        if (is_bool($data)) {
-            continue;
-        }
-        array_push($push, $data);
-        array_push($locations, $push);
-    }
+    $locations = $user->showAllBedInOther();
 }
 
 if (isset($_GET['showAllThis'])) {
-    $bed = $user->getRequest(
-        "SELECT *
-        FROM {$user->getInformation('location')}",
-        [],
-        'fetchAll'
-    );
+    $bed = $user->showAllBedHere();
 }
 
-if (isset($_GET['name'], $_GET['firstName'])) {
-    $patient = $user->getRequest(
-        'SELECT *
-        FROM `patients`
-        WHERE `name` = :name
-        AND `firstName` = :firstName',
-        [
-            'name' => $_GET['name'],
-            'firstName' => $_GET['firstName']
-        ],
-        'fetch'
-    );
-    $patient = json_decode($patient['informations'], true);
+if (isset($_POST['name'], $_POST['firstName'])) {
+    $patient = $user->getPatientFolderByName($_POST['name'], $_POST['firstName']);
 }
 
-if (isset($_GET['patient_id'])) {
-    $patient = $user->getRequest(
-        'SELECT *
-        FROM `patients`
-        WHERE `id` = :id',
-        [
-            'id' => $_GET['patient_id'],
-        ],
-        'fetch'
-    );
-    $patient = json_decode($patient['informations'], true);
+if (isset($_POST['patient_id'])) {
+    $patient = $user->getPatientFolderById($_POST['patient_id']);
 }
 
 if (isset($patient) && is_bool($patient)) {
@@ -125,33 +55,18 @@ if (
         $_POST['incidentDetails']
     )
 ) {
-
-    $patient = $user->getRequest(
-        'SELECT *
-        FROM `patients`
-        WHERE `name` = :name
-        AND `firstName` = :firstName',
-        [
-            'name' => $_POST['name'],
-            'firstName' => $_POST['firstName']
-        ],
-        'fetch'
-    );
-
-    $patient = json_decode($patient['informations'], true);
-
-    $patient['incidents'] = array_merge(
-        $patient['incidents'],
-        [
-            $_POST['incidentCategory'] => $_POST['incidentDetails']
-        ]
-    );
-
-    $user->getRequest(
-        'UPDATE `patients`
-        SET `informations` = :fiche',
-        [
-            'fiche' => json_encode($patient)
-        ]
+    $user->addIncident(
+        $_POST['name'],
+        $_POST['firstName'],
+        $_POST['incidentCategory'],
+        $_POST['incidentDetails']
     );
 }
+
+$all = $user->getRequest(
+    "SELECT *
+    FROM `{$user->getInformation('location')}`
+    WHERE `service` = \"{$user->getInformation('service')}\"",
+    [],
+    'fetch'
+);
