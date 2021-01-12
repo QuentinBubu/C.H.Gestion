@@ -55,7 +55,7 @@
         <section>
             <h1>Voir tout les lits du service <?= $user->getInformation('service') ?> dans les autres hôpitaux</h1>
             <form>
-                <button name="showAll">Afficher tout</button>
+                <button name="showAll">Afficher tout</button><span class="cross">&cross;</span>
             </form>
             <br>
             <?php
@@ -71,7 +71,7 @@
                         <?php
                     endforeach;
                     ?>
-                    <span class="cross">&cross;</span>
+                    
                     <?php
                 endif;
             ?>
