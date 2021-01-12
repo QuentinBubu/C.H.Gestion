@@ -4,8 +4,9 @@ namespace App;
 
 class User extends Database
 {
-    public $globalAccountInformation;
+    use PersonnelAction;
 
+    public $globalAccountInformation;
     private function setNewAccount($username, $password, $passwordConfirm, $location, $service)
     {
         $accountNumber =
