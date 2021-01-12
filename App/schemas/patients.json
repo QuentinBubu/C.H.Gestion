@@ -34,6 +34,17 @@
         }
     },
     "incidents": {
-        "catégorie": "détails"
+        "Violences physiques": {
+            "date": "détails"
+        },
+        "Violences verbales": {
+            "date": "détails"
+        },
+        "Degradation": {
+            "date": "détails"
+        },
+        "Autre": {
+            "date": "détails"
+        }
     }
 }
