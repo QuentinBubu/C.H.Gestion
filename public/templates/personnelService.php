@@ -101,7 +101,7 @@
         <section>
             <h1>Afficher une fiche patient:</h1>
             <h3>Par Nom et Prénom</h3>
-            <form method="post">
+            <form method="post" autocomplete="off">
                 <label for="name">Nom:</label>
                 <input type="text" id="name" name="name" placeholder="Nom" />
                 <label for="firstName">Prénom:</label>
@@ -109,7 +109,7 @@
                 <button>Voir la fiche</button>
             </form>
             <h3>Par identifiant</h3>
-            <form>
+            <form method="POST" autocomplete="off">
                 <label for="patient_id">Identifiant:</label>
                 <input type="number" id="patient_id" name="patient_id" placeholder="Identifiant" />
                 <button>Voir la fiche</button>
