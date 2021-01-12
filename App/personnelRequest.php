@@ -22,10 +22,30 @@ if (!isset($user)) {
     exit();
 }
 
+/* UPDATE SECTIONS */
+
 // Update bed available
 if (isset($_POST['departure']) && isset($_POST['arrival'])) {
     $user->updateBed($_POST['departure'], $_POST['arrival']);
 }
+
+if (
+    isset(
+        $_POST['name'],
+        $_POST['firstName'],
+        $_POST['incidentCategory'],
+        $_POST['incidentDetails']
+    )
+) {
+    $user->addIncident(
+        $_POST['name'],
+        $_POST['firstName'],
+        $_POST['incidentCategory'],
+        $_POST['incidentDetails']
+    );
+}
+
+/* SHOW SECTIONS */
 
 if (isset($_GET['showAll'])) {
     $locations = $user->showAllBedInOther();
@@ -45,22 +65,6 @@ if (isset($_POST['patient_id'])) {
 
 if (isset($patient) && is_bool($patient)) {
     $patient = 'Erreur: patient introuvable!';
-}
-
-if (
-    isset(
-        $_POST['name'],
-        $_POST['firstName'],
-        $_POST['incidentCategory'],
-        $_POST['incidentDetails']
-    )
-) {
-    $user->addIncident(
-        $_POST['name'],
-        $_POST['firstName'],
-        $_POST['incidentCategory'],
-        $_POST['incidentDetails']
-    );
 }
 
 $all = $user->getRequest(

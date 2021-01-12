@@ -95,12 +95,10 @@ trait PersonnelAction {
     public function addIncident($name, $firstName, $incidentCategory, $incidentDetails)
     {
         $patient = $this->getPatientFolderByName($name, $firstName);
-    
-        $patient['incidents'][$incidentCategory] = array_merge(
+
+        array_push(
             $patient['incidents'][$incidentCategory],
-            [
-                $incidentDetails
-            ]
+            $incidentDetails
         );
     
         $this->getRequest(
