@@ -5,7 +5,7 @@ use App\User;
 /*
  * Redirect to index if user is disconnected
  * Else, create user class
-*/
+ */
 
 if (!isset($_SESSION['user'])) {
     header('Location: /');
@@ -16,7 +16,6 @@ if (!isset($_SESSION['user'])) {
 }
 
 // If user has not authorization
-
 if (!isset($user)) {
     require_once 'error.php';
     printError('Erreur: vous n\'avez pas les droits!');
@@ -24,7 +23,6 @@ if (!isset($user)) {
 }
 
 // Update bed available
-
 if (isset($_POST['departure']) && isset($_POST['arrival'])) {
     $user->getRequest(
         "UPDATE `{$user->getInformation('location')}`
@@ -139,12 +137,21 @@ if (
         ],
         'fetch'
     );
+
     $patient = json_decode($patient['informations'], true);
 
-    
+    $patient['incidents'] = array_merge(
+        $patient['incidents'],
+        [
+            $_POST['incidentCategory'] => $_POST['incidentDetails']
+        ]
+    );
 
     $user->getRequest(
-        'INSERT INTO ``',
-        []
+        'UPDATE `patients`
+        SET `informations` = :fiche',
+        [
+            'fiche' => json_encode($patient)
+        ]
     );
 }

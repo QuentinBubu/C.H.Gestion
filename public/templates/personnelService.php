@@ -127,8 +127,8 @@
             <?php if (isset($patient)): ?>
                 <h3>Ajouter un incident</h3>
                 <form method="post">
-                    <input type="hidden" name="name" value="<?= $patient['nom'] ?>" />
-                    <input type="hidden" name="firstName" value="<?= $patient['prénom'] ?>" />
+                    <input type="hidden" name="name" value="<?= $patient['informations']['nom'] ?>" />
+                    <input type="hidden" name="firstName" value="<?= $patient['informations']['prénom'] ?>" />
                     <label for="category">Catégorie:</label>
                     <select name="incidentCategory" id="category" required>
                         <option selected disabled>--Séléctionnez une option--</option>
