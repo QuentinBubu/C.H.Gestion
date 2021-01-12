@@ -1,13 +1,15 @@
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+:root {
+    font-size: 20px
+}
 
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%
 }
 
-body {
+html, body {
     min-height: 100vh;
-    width: 100vw;
     max-width: 100%;
 }
 
@@ -320,15 +322,13 @@ video {
 }
 
 /* Personnal class */
-input{
+input {
     padding: 2px;
     padding-left: 5px;
     border: 1px solid black;
     border-radius: 10px;
 }
-body{
-    margin-left: 20px;
-}
+
 button{
     outline: transparent;
     border-radius: 20px;
@@ -339,12 +339,18 @@ button{
     padding-top: 5px;
     padding-bottom: 5px;
 }
-*{
+
+* {
     outline: transparent;
 }
+
 .center-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.cross {
+    cursor: pointer;
 }
