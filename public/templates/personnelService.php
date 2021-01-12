@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="../assets/css/soignants.css">
     <link rel="shortcut icon" href="./assets/picture/favicon.jpg" type="image/x-icon" />
+    <script src="./assets/js/event.js" defer></script>
     <title>Espace personnel soignant</title>
 </head>
 <body>
 
     <header>
-        <h1>Bonjour <div class="titre-w"><?= $user->getInformation('username') ?></div> !</h1>
-        <h2>Service <div class="titre-w"><?= $user->getInformation('service') ?></div>, hôpital <div class="titre-w"><?= $user->getInformation('location') ?></div></h2>
+        <h1>Bonjour <span class="titre-w"><?= $user->getInformation('username') ?></span>!</h1>
+        <h2>Service <span class="titre-w"><?= $user->getInformation('service') ?></span>, hôpital de <span class="titre-w"><?= $user->getInformation('location') ?></span></h2>
     </header>
 
     <main>
@@ -37,7 +38,7 @@
                 </div>
             </div>
         </section>
-<br><br><br><br>
+
         <section>
             <h3>Départ / arrivés:</h3>
             <div class="center-content">
@@ -49,12 +50,12 @@
                     <button>Enregistrer</button>
                 </form>
             </div>
-        </section> <br><br>
+        </section>
 
         <section>
             <h1>Voir tout les lits du service <?= $user->getInformation('service') ?> dans les autres hôpitaux</h1>
-            <form method="get">
-                <button name="showAll">Afficher tout</button> <br><br>
+            <form>
+                <button name="showAll">Afficher tout</button>
             </form>
             <?php
                 if (isset($locations)):
@@ -68,14 +69,16 @@
                         </div>
                         <?php
                     endforeach;
+                    ?>
+                    <span class="cross">&cross;</span>
+                    <?php
                 endif;
             ?>
-            
         </section>
-                <br>
+
         <section>
             <h1>Voir tout les lits de cet hôpital</h1>
-            <form method="get">
+            <form>
                 <button class="button-lit-affichage" name="showAllThis">Afficher tout</button>
             </form>
             <?php
@@ -88,6 +91,9 @@
                         <p>Lits total: <?= $value['lits_total'] ?></p>
                         <?php
                     endforeach;
+                    ?>
+                    <span class="cross">&cross;</span>
+                    <?php
                 endif;
             ?>
         </section>
@@ -103,7 +109,7 @@
                 <button>Voir la fiche</button>
             </form>
             <h3>Par identifiant</h3>
-            <form method="get">
+            <form>
                 <label for="patient_id">Identifiant:</label>
                 <input type="number" id="patient_id" name="patient_id" placeholder="Identifiant" />
                 <button>Voir la fiche</button>
@@ -116,6 +122,7 @@
                 }
             ?>
         </section>
+
         <section>
             <?php if (isset($patient)): ?>
                 <h3>Ajouter un incident</h3>
@@ -137,6 +144,7 @@
             <?php endif; ?>
         </section>
     </main>
+
     <br><br><br><br><br><br><br><br><br>
 </body>
 </html>
