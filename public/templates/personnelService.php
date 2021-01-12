@@ -47,7 +47,7 @@
                     <input type="number" name="departure" id="departure" min="0" value="0"/>
                     <label for="arrival">Arrivée(s):</label>
                     <input type="number" name="arrival" id="arrival" min="0" value="0"/>
-                    <button>Enregistrer</button>
+                    <button class="register-dp">Enregistrer</button>
                 </form>
             </div>
         </section>
@@ -55,8 +55,9 @@
         <section>
             <h1>Voir tout les lits du service <?= $user->getInformation('service') ?> dans les autres hôpitaux</h1>
             <form>
-                <button name="showAll">Afficher tout</button>
+                <button name="showAll">Afficher tout</button> <span class="cross">&cross;</span>
             </form>
+            <br>
             <?php
                 if (isset($locations)):
                     foreach ($locations as $key => $value):
@@ -70,7 +71,7 @@
                         <?php
                     endforeach;
                     ?>
-                    <span class="cross">&cross;</span>
+                    
                     <?php
                 endif;
             ?>

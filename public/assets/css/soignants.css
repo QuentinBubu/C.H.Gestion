@@ -1,8 +1,8 @@
 body {
     align-items:center;
     margin-top: 1rem;
-    background: rgb(131,58,180);
-    background: linear-gradient(45deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+   background: rgb(0,125,255);
+background: linear-gradient(90deg, rgba(0,125,255,1) 0%, rgba(255,255,255,1) 50%);
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -59,7 +59,14 @@ h1 {
     background-color: white;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
-
+.register-dp{
+    transition:1s;
+}
+.register-dp:hover{
+    border: 1px solid white;
+    color: white;
+    background-color: #007dff;
+}
 /* card-list */
 .list-card {
     padding: 10px;
