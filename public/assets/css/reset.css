@@ -6,17 +6,14 @@ html {
 }
 
 body {
-    margin-left: 20px;
-    margin-top: 0;
-    margin-bottom: 0px;
-    margin-right: 0px;
     min-height: 100vh;
     width: 100vw;
     max-width: 100%;
 }
 
 main {
-    display: block
+    display: block;
+    margin-left: 20px;
 }
 
 h1 {
