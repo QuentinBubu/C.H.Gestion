@@ -6,3 +6,6 @@ Centre Hospitalier Gestion is a website for manage your hospitals centers and vi
 
 ## Required
 Minimal version of PHP: 7.4
+
+## Project Version
+V.0.2
