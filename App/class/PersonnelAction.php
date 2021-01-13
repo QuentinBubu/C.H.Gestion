@@ -98,7 +98,7 @@ trait PersonnelAction {
 
         array_push(
             $patient['incidents'][$incidentCategory],
-            $incidentDetails
+            [date('Y-m-d H:i:s') => $incidentDetails]
         );
     
         $this->getRequest(
