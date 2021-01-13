@@ -57,6 +57,11 @@
             <form>
                 <button name="showAll">Afficher tout</button><span class="cross">&cross;</span>
             </form>
+            <form method="post">
+                <label for="searchMediacalCenter">Nom de l'hôpital</label>
+                <input type="search" name="searchMediacalCenter" id="searchMediacalCenter" />
+                <button>Rechercher</button>
+            </form>
             <br>
             <?php
                 if (isset($locations)):
@@ -70,9 +75,6 @@
                         </div>
                         <?php
                     endforeach;
-                    ?>
-                    
-                    <?php
                 endif;
             ?>
         </section>
