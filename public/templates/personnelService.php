@@ -62,13 +62,19 @@
                 <input type="search" name="searchMediacalCenter" id="searchMediacalCenter" />
                 <button>Rechercher</button>
             </form>
-            <br>
             <?php
                 if (isset($locations)):
                     foreach ($locations as $key => $value):
                         ?>
                         <div class="list-card">
-                            <h3>Hôpital <?= $value['location'] ?>:</h3>
+                            <h3>
+                                Hôpital <?= $value['location'] ??
+                                    htmlspecialchars(
+                                        ucfirst(
+                                            strtolower($_POST['searchMediacalCenter'])
+                                        )
+                                    ) 
+                                ?>:</h3>
                             <p>Lits disponibles: <?= $value[0]['lits_total'] - $value[0]['lits_occupes'] ?></p>
                             <p>Lits occupés: <?= $value[0]['lits_occupes'] ?></p>
                             <p>Lits total: <?= $value[0]['lits_total'] ?></p> <br>

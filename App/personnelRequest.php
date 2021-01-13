@@ -51,6 +51,15 @@ if (isset($_GET['showAll'])) {
     $locations = $user->showAllBedInOther();
 }
 
+if (isset($_POST['searchMediacalCenter'])) {
+    $locations = $user->showBedInSpecificCenter($_POST['searchMediacalCenter']);
+    $locations[0] = $locations;
+    if (is_bool($locations) || is_null($locations)) {
+        echo 'Erreur';
+    }
+}
+
+
 if (isset($_GET['showAllThis'])) {
     $bed = $user->showAllBedHere();
 }

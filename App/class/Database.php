@@ -38,15 +38,15 @@ class Database
         try {
             $request = $this->pdo->prepare($request);
             $request->execute($values);
+            if ($type === 'fetchAll') {
+                return $request->fetchAll(PDO::FETCH_ASSOC);
+            } elseif ($type === 'fetch') {
+                return $request->fetch();
+            } else {
+                return $request;
+            }
         } catch (Exception $e) {
             die('Erreur: ' . $e->getMessage());
-        }
-        if ($type === 'fetchAll') {
-            return $request->fetchAll(PDO::FETCH_ASSOC);
-        } elseif ($type === 'fetch') {
-            return $request->fetch();
-        } else {
-            return $request;
         }
     }
 

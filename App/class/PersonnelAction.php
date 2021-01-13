@@ -52,6 +52,19 @@ trait PersonnelAction {
         return $locations;
     }
 
+    public function showBedInSpecificCenter($center)
+    {
+        return $this->getRequest(
+            "SELECT *
+            FROM {strtolower($center)}
+            WHERE `service` = :service",
+            [
+                'service' => self::getInformation('service')
+            ],
+            'fetchAll'
+        );
+    }
+
     public function showAllBedHere()
     {
         return $this->getRequest(
