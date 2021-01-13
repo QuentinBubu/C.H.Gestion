@@ -3,3 +3,6 @@ Centre Hospitalier Gestion is a website for manage your hospitals centers and vi
 
 ### Frot-end colaborator:
 [Nino34130](https://github.com/Nino34130)
+
+## Required
+Minimal version of PHP: 7.4
