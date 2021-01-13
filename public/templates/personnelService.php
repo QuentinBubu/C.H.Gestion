@@ -100,9 +100,6 @@
                         <p>Lits total: <?= $value['lits_total'] ?></p>
                         <?php
                     endforeach;
-                    ?>
-                    
-                    <?php
                 endif;
             ?>
         </section>
