@@ -55,12 +55,12 @@
         <section>
             <h1>Voir tout les lits du service <?= $user->getInformation('service') ?> dans les autres hôpitaux</h1>
             <form>
-                <button name="showAll">Afficher tout</button><span class="cross">&cross;</span>
-            </form>
-            <form method="post">
-                <label for="searchMediacalCenter">Nom de l'hôpital</label>
+                <button class="btn-aff-tout" name="showAll">Afficher tout</button><span class="cross">&cross;</span>
+            </form><br>
+            <form class="search-bar" method="post">
+                <label for="searchMediacalCenter">Nom de l'hôpital :</label>
                 <input type="search" name="searchMediacalCenter" id="searchMediacalCenter" />
-                <button>Rechercher</button>
+                <button>Rechercher</button> 
             </form>
             <?php
                 if (isset($locations)):
@@ -88,7 +88,7 @@
         <section>
             <h1>Voir tout les lits de cet hôpital</h1>
             <form>
-                <button class="button-lit-affichage" name="showAllThis">Afficher tout</button>
+                <button class="button-lit-affichage" name="showAllThis">Afficher tout</button><span class="cross">&cross;</span>
             </form>
             <?php
                 if (isset($bed)):
@@ -101,7 +101,7 @@
                         <?php
                     endforeach;
                     ?>
-                    <span class="cross">&cross;</span>
+                    
                     <?php
                 endif;
             ?>

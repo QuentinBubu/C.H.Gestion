@@ -36,7 +36,7 @@
                     name="password"
                     id="pass"
                     minlength="10"
-                    placeholder="Votre mot de passe"
+                    placeholder="Votre nom d'utilisateur"
                     required
                 />
                 <button>Se connecter</button>
