@@ -37,12 +37,12 @@ main>form>input:invalid {
     border: 2px solid red;
 }
 
-#username:invalid ~ #pass:invalid ~ button {
+#username:invalid~#pass:invalid~button {
     border: 2px solid red;
     color: red;
 }
 
-#username:valid ~ #pass:valid ~ button {
+#username:valid~#pass:valid~button {
     border: 2px solid green;
     color: green;
 }

@@ -73,7 +73,7 @@
                                         ucfirst(
                                             strtolower($_POST['searchMediacalCenter'])
                                         )
-                                    ) 
+                                    )
                                 ?>:</h3>
                             <p>Lits disponibles: <?= $value[0]['lits_total'] - $value[0]['lits_occupes'] ?></p>
                             <p>Lits occupés: <?= $value[0]['lits_occupes'] ?></p>
