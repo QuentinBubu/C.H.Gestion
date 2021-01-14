@@ -58,10 +58,12 @@
                 <button class="btn-aff-tout" name="showAll">Afficher tout</button><span class="cross">&cross;</span>
             </form><br>
             <form class="search-bar" method="post">
+            <div class="container-search">
                 <label for="searchMediacalCenter">Nom de l'hôpital :</label>
-                <input type="search" name="searchMediacalCenter" id="searchMediacalCenter" />
-                <button>Rechercher</button> 
-            </form>
+                <input class="search-input-hpt" type="search" name="searchMediacalCenter" id="searchMediacalCenter" placeholder="Recherche"/>
+                <button class="register-dp">Rechercher</button> 
+            </div>
+            </form><br><br>
             <?php
                 if (isset($locations)):
                     foreach ($locations as $key => $value):
@@ -88,16 +90,18 @@
         <section>
             <h1>Voir tout les lits de cet hôpital</h1>
             <form>
-                <button class="button-lit-affichage" name="showAllThis">Afficher tout</button><span class="cross">&cross;</span>
+                <button class="btn-aff-tout" name="showAllThis">Afficher tout</button><span class="cross">&cross;</span> <br><br>
             </form>
             <?php
                 if (isset($bed)):
                     foreach ($bed as $key => $value):
                         ?>
+                        <div class="list-card">
                         <h3>Service <?= $value['service'] ?>:</h3>
                         <p>Lits disponibles: <?= $value['lits_total'] - $value['lits_occupes'] ?></p>
                         <p>Lits occupés: <?= $value['lits_occupes'] ?></p>
                         <p>Lits total: <?= $value['lits_total'] ?></p>
+                    </div>
                         <?php
                     endforeach;
                 endif;
@@ -106,20 +110,22 @@
 
         <section>
             <h1>Afficher une fiche patient:</h1>
-            <h3>Par Nom et Prénom</h3>
+            <div class="ajout-patient">
+            <h3>Par Nom et Prénom :</h3>
             <form method="post" autocomplete="off">
                 <label for="name">Nom:</label>
-                <input type="text" id="name" name="name" placeholder="Nom" />
+                <input class="element" type="text" id="name" name="name" placeholder="Nom" /> <br>
                 <label for="firstName">Prénom:</label>
-                <input type="text" id="firstName" name="firstName" placeholder="Prénom" />
-                <button>Voir la fiche</button>
-            </form>
-            <h3>Par identifiant</h3>
+                <input class="element" type="text" id="firstName" name="firstName" placeholder="Prénom" /> <br>
+                <button id="element" class="register-dp">Voir la fiche</button> <br>
+            </form><br><br>
+            <h3>Par identifiant :</h3>
             <form method="POST" autocomplete="off">
                 <label for="patient_id">Identifiant:</label>
-                <input type="number" min="0" id="patient_id" name="patient_id" placeholder="Identifiant" />
-                <button>Voir la fiche</button>
+                <input type="number" min="0" id="patient_id" name="patient_id" placeholder="Identifiant" /> <br>
+                <button id='element' class="register-dp" >Voir la fiche</button>
             </form>
+            </div>
             <?php
                 if (isset($patient)) {
                     echo '<pre>';
@@ -145,7 +151,7 @@
                     </select>
                     <label for="incidentDetails">Détails</label>
                     <input type="text" name="incidentDetails" id="incidentDetails" required />
-                    <button>Enregistrer</button>
+                    <button class="register-dp">Enregistrer</button>
                 </form>
             <?php endif; ?>
         </section>

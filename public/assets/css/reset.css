@@ -351,6 +351,7 @@ button {
 }
 
 .cross {
+    transition: 1s;
     cursor: pointer;
     border: 1px solid black;
     padding-left: 10px;
@@ -359,6 +360,9 @@ button {
     padding-bottom: 5px;
     border-radius: 40px;
     margin-left: 20px;
+}
+.cross:hover{
+    background-color: white;
 }
 
 .btn-aff-tout {

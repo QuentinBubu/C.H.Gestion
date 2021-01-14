@@ -31,8 +31,15 @@ main>section {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     border-radius: 20px;
     background-color: white;
+    transition: 1s;
 }
-
+.element{
+    margin-top: 10px;
+}
+#element{
+    margin-top: 10px;
+    float: left;
+}
 /* taille de la police des nombres */
 .nbr-lits {
     font-size: 2rem;
@@ -84,4 +91,30 @@ h1 {
 
 .button-lit-affichage {
     margin-left: 20px;
+}
+.search-input-hpt{
+    background-color: transparent;
+    color: black;
+}
+.container-search{
+    background-color: white;
+    display: inline-block;
+    padding: 15px;
+    border-radius: 20px;
+}
+.btn-aff-tout:hover{
+    background-color: white;
+}
+.btn-aff-tout{
+    transition: 1s;
+}
+.ajout-patient{
+    background-color: white;
+    padding: 20px;
+    display: inline-block;
+    border-radius: 20px;
+}
+.lits-section:hover{
+    background-color:#007dff;
+    color: white;
 }
