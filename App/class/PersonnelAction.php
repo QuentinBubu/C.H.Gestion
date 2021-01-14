@@ -2,8 +2,8 @@
 
 namespace App;
 
-trait PersonnelAction {
-
+trait PersonnelAction
+{
     public function updateBed($departure, $arrival)
     {
         $this->getRequest(
