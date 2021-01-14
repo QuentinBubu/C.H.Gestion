@@ -40,7 +40,7 @@
         </section>
 
         <section>
-            <h3>Départ / arrivés:</h3>
+            <h3>Départs / Arrivées:</h3>
             <div class="center-content">
                 <form class="form-dp" action="<?= $router->generate('soignantsPOST') ?>" method="post">
                     <label for="departure">Départ(s):</label>
