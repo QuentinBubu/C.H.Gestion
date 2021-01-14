@@ -117,7 +117,7 @@
             <h3>Par identifiant</h3>
             <form method="POST" autocomplete="off">
                 <label for="patient_id">Identifiant:</label>
-                <input type="number" id="patient_id" name="patient_id" placeholder="Identifiant" />
+                <input type="number" min="0" id="patient_id" name="patient_id" placeholder="Identifiant" />
                 <button>Voir la fiche</button>
             </form>
             <?php
