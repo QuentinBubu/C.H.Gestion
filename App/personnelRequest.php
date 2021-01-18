@@ -29,6 +29,7 @@ if (isset($_POST['departure']) && isset($_POST['arrival'])) {
     $user->updateBed($_POST['departure'], $_POST['arrival']);
 }
 
+// Add incident to patient folder
 if (
     isset(
         $_POST['name'],
@@ -47,10 +48,12 @@ if (
 
 /* SHOW SECTIONS */
 
+// Show bed in other center of current service
 if (isset($_GET['showAll'])) {
     $locations = $user->showAllBedInOther();
 }
 
+// Search hôpital center
 if (isset($_POST['searchMediacalCenter'])) {
     $locations = $user->showBedInSpecificCenter($_POST['searchMediacalCenter']);
     $locations[0] = $locations;
